@@ -23,39 +23,41 @@ play.addEventListener("click", () =>{
     console.log(playRound(computerChoice, playerOption));
 });
 
-/* This will play one round of the game  */
+/* This will play one round of the game 
+1 = computer won
+2 = player won
+3 = tie */
 
 function playRound(computerChoice, playerOption){
-
-    let winner = "";
 
     switch (computerChoice){
         case "rock":
             if (playerOption.value.toLowerCase() === "rock"){
-                return "tie";
+                return 3;
             }else if(playerOption.value.toLowerCase() === "paper"){
-                return "player won";
+                return 2;
             }else{
-                return "computer won";
+                return 1;
             };
             break;
         case "paper":
             if (playerOption.value.toLowerCase() === "rock"){
-                return "computer won";
+                return 1;
             }else if (playerOption.value.toLowerCase() === "paper"){
-                return "tie";
+                return 3;
             }else{
-                return "player won"
+                return 2;
             };
             break;
         case "scissors":
             if (playerOption.value.toLowerCase() === "rock"){
-                return "player won";
+                return 2;
             }else if (playerOption.value.toLowerCase() === "paper"){
-                return "computer won";
+                return 1;
             }else{
                 return "tie"
             };
             break;
     } 
 };  
+
