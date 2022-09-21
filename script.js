@@ -12,27 +12,50 @@ let arr = [
 const getRandom = (arr) => {
     return arr[Math.floor(Math.random() * arr.length)];
 };
-/* This will let us update the  computer selection */
-let computerChoice =  getRandom(arr);
-computerOption.textContent =  `${computerChoice}`;
 
 
-/* This will tell us the user choice */
+/* This will tell us the user choice an  run the game  */
 play.addEventListener("click", () =>{
-    console.log(`We are playing`);
-    console.log(`the user choice is ${playerOption.value.toLowerCase()}`);
+    /* This will let us update the  computer selection */
+    let computerChoice =  getRandom(arr);
+    computerOption.innerHTML = `<p>Computer picked up: ${computerChoice} </p>`;
     playerChoice.textContent =`${playerOption.value.toLowerCase()}`;
-    playRound(computerChoice, playerChoice);
+    console.log(playRound(computerChoice, playerOption));
 });
 
 /* This will play one round of the game  */
 
 function playRound(computerChoice, playerOption){
-    console.log(`Computer chose ${computerChoice}`);
-    console.log(` User chose ${playerChoice.value.toLowerCase()}`);
 
+    let winner = "";
 
-
-
- 
+    switch (computerChoice){
+        case "rock":
+            if (playerOption.value.toLowerCase() === "rock"){
+                return "tie";
+            }else if(playerOption.value.toLowerCase() === "paper"){
+                return "player won";
+            }else{
+                return "computer won";
+            };
+            break;
+        case "paper":
+            if (playerOption.value.toLowerCase() === "rock"){
+                return "computer won";
+            }else if (playerOption.value.toLowerCase() === "paper"){
+                return "tie";
+            }else{
+                return "player won"
+            };
+            break;
+        case "scissors":
+            if (playerOption.value.toLowerCase() === "rock"){
+                return "player won";
+            }else if (playerOption.value.toLowerCase() === "paper"){
+                return "computer won";
+            }else{
+                return "tie"
+            };
+            break;
+    } 
 };  
